@@ -30,8 +30,12 @@
     <Reference Include="FEZ.orig">
       <HintPath>..\FEZ_TAS\FEZ.orig.exe</HintPath>
     </Reference>
+    <Reference Include="FezEngine, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FEZ_TAS\FezEngine.dll</HintPath>
+    </Reference>
     <Reference Include="MonoMod">
-      <HintPath>..\MonoMod\MonoMod.exe</HintPath>
+      <HintPath>..\FEZ_TAS\MonoMod.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
