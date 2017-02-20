@@ -27,6 +27,14 @@
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FEZ_TAS\Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ContentSerialization, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FEZ_TAS\ContentSerialization.dll</HintPath>
+    </Reference>
     <Reference Include="FezEngine.orig">
       <HintPath>..\FEZ_TAS\FezEngine.orig.dll</HintPath>
     </Reference>
@@ -48,6 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FezEngine\Components\InputManager.cs" />
+    <Compile Include="FezEngine\Tools\DisplayModeEqualityComparer.cs" />
+    <Compile Include="FezEngine\Tools\SettingsManager.cs" />
     <Compile Include="FezTas\TasButtons.cs" />
     <Compile Include="FezEngine\Services\KeyboardStateManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -58,8 +68,7 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" "$(SolutionDir)FEZ_TAS\FezEngine.tas.dll" 
-"$(SolutionDir)FEZ_TAS\MonoMod.exe" "$(SolutionDir)FEZ_TAS\FezEngine.orig.dll" "$(SolutionDir)FEZ_TAS\FezEngine.tas.dll"  "$(SolutionDir)FEZ_TAS\FezEngine.dll"</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)FEZ_TAS\MonoMod.exe" "$(SolutionDir)FEZ_TAS\FezEngine.orig.dll" "$(TargetPath)"  "$(SolutionDir)FEZ_TAS\FezEngine.dll"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
