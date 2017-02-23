@@ -4,7 +4,7 @@ using System;
 
 namespace FezGame
 {
-    class patch_Fez : Fez
+    public class patch_Fez : Fez
     {
         private TimeSpan TrueTime = TimeSpan.Zero;
         private TimeSpan TrueEllapse = TimeSpan.Zero;
@@ -14,6 +14,8 @@ namespace FezGame
         private extern void orig_Initialize();
         protected override void Initialize()
         {
+            Version += " T0.1";
+
             orig_Initialize();
             Window.Title = "FEZ TAS";
             Tas.Initialize(this);

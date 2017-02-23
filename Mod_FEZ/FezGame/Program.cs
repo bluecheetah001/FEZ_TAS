@@ -9,7 +9,7 @@ using FezTas;
 
 namespace FezGame
 {
-    class Program
+    public class Program
     {
         [MonoMod.MonoModReplace]
         private static void Main(string[] args)

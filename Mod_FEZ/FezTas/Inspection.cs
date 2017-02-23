@@ -2,7 +2,6 @@
 using FezEngine.Tools;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using System;
 
 namespace FezTas
 {
