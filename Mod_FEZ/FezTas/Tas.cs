@@ -1,7 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Common;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.IO;
+using System.Text;
 
 namespace FezTas
 {
@@ -29,6 +31,7 @@ namespace FezTas
 
         public static void Initialize(Game game)
         {
+            Inspection.Initialize(game);
         }
 
         public static void Update()
@@ -41,6 +44,7 @@ namespace FezTas
 
         public static void PostFrame()
         {
+            GlobalFrames++;
         }
 
         public static void Draw(GraphicsDevice graphics)

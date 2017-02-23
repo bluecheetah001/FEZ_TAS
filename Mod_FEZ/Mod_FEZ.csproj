@@ -59,6 +59,7 @@
     <Compile Include="FezGame\patch_Fez.cs" />
     <Compile Include="FezGame\Program.cs" />
     <Compile Include="FezGame\Tools\ThreadExecutionState.cs" />
+    <Compile Include="FezTas\Inspection.cs" />
     <Compile Include="FezTas\Tas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
