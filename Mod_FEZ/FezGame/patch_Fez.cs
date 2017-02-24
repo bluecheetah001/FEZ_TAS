@@ -1,5 +1,6 @@
 ﻿using FezTas;
 using Microsoft.Xna.Framework;
+using MonoMod;
 using System;
 
 namespace FezGame
@@ -73,18 +74,11 @@ namespace FezGame
         }
 
         // allow game to run in background
+        [MonoModReplace]
         public new bool IsActive
         {
-            [MonoMod.MonoModReplace]
-            get
-            {
-                return true;
-            }
-            [MonoMod.MonoModReplace]
-            set
-            {
-
-            }
+            get { return true; }
+            set { }
         }
     }
 }

@@ -35,16 +35,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\FEZ_TAS\EasyStorage.dll</HintPath>
     </Reference>
-    <Reference Include="FEZ.orig">
-      <HintPath>..\FEZ_TAS\FEZ.orig.exe</HintPath>
+    <Reference Include="FEZ">
+      <HintPath>..\FEZ\FEZ.exe</HintPath>
     </Reference>
     <Reference Include="FezEngine, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\FEZ_TAS\FezEngine.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null" />
-    <Reference Include="MonoMod">
-      <HintPath>..\FEZ_TAS\MonoMod.exe</HintPath>
+    <Reference Include="MonoMod, Version=17.1.6259.36342, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MonoMod\MonoMod.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -54,10 +55,14 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="TasRules">
+      <HintPath>..\TasRules\bin\Release\TasRules.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FezGame\patch_Fez.cs" />
     <Compile Include="FezGame\Program.cs" />
+    <Compile Include="FezGame\Services\GameStateManager.cs" />
     <Compile Include="FezGame\Tools\ThreadExecutionState.cs" />
     <Compile Include="FezTas\Inspection.cs" />
     <Compile Include="FezTas\Tas.cs" />
@@ -65,7 +70,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"$(SolutionDir)FEZ_TAS\MonoMod.exe" "$(SolutionDir)FEZ_TAS\FEZ.orig.exe" "$(TargetPath)" "$(SolutionDir)FEZ_TAS\FEZ.exe"</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)MonoMod\MonoMod.exe" "$(SolutionDir)FEZ\FEZ.exe" "$(TargetPath)" "$(SolutionDir)FEZ_TAS\FEZ.exe"</PostBuildEvent>
   </PropertyGroup>
   <Target Name="AfterClean">
     <Delete Files="$(SolutionDir)FEZ_TAS\FEZ.exe" ContinueOnError="true" />

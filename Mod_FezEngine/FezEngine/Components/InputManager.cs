@@ -2,14 +2,15 @@
 using FezEngine.Structure.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using MonoMod;
 using System;
 
 namespace FezEngine.Components
 {
     // fixes some weird issues with going back and forth with inputs coming from keyboard and gamepad
-    class InputManager
+    public class InputManager
     {
-        public static FezButtonState UseGamepadState = FezButtonState.Down;
+        private static FezButtonState UseGamepadState = FezButtonState.Down;
         public static bool UseGamepad
         {
             get
@@ -23,7 +24,8 @@ namespace FezEngine.Components
         }
 
         // replace to make the transitions between playback and record much smoother
-        public void replace_Update(GameTime gameTime)
+        [MonoModReplace]
+        public void Update(GameTime gameTime)
         {
             // keyboard
             KeyboardState.Update(Keyboard.GetState(), gameTime);
@@ -136,75 +138,75 @@ namespace FezEngine.Components
         }
 
         // fields we need access to
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         private bool gamepad;
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public IKeyboardStateManager KeyboardState { private get; set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public IGamepadsManager GamepadsManager { private get; set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public event Action<PlayerIndex> ActiveControllerDisconnected;
 
 
         // the buttons
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public FezButtonState GrabThrow { get; private set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public Vector2 Movement { get; private set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public Vector2 FreeLook { get; private set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public FezButtonState Jump { get; private set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public FezButtonState Back { get; private set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public FezButtonState OpenInventory { get; private set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public FezButtonState Start { get; private set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public FezButtonState RotateLeft { get; private set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public FezButtonState RotateRight { get; private set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public FezButtonState CancelTalk { get; private set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public FezButtonState Up { get; private set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public FezButtonState Down { get; private set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public FezButtonState Left { get; private set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public FezButtonState Right { get; private set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public FezButtonState ClampLook { get; private set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public FezButtonState FpsToggle { get; private set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public FezButtonState ExactUp { get; private set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public FezButtonState MapZoomIn { get; private set; }
 
-        [MonoMod.MonoModIgnore]
+        [MonoModIgnore]
         public FezButtonState MapZoomOut { get; private set; }
     }
 }

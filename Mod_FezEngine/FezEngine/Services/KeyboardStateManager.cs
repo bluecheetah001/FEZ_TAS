@@ -3,11 +3,12 @@ using FezEngine.Structure.Input;
 using System.Collections.Generic;
 using FezTas;
 using Microsoft.Xna.Framework;
+using MonoMod;
 
 namespace FezEngine.Services
 {
     // disable standard keyboard input, and replace it with programatic input
-    class KeyboardStateManager
+    public class KeyboardStateManager
     {
         // set this at the begining of every frame, and it will be read at the correct point within the frame
         public static TasButtons NextButtons;
@@ -58,7 +59,8 @@ namespace FezEngine.Services
         };
 
         // for known TasButton -> Keys, use that. Otherwise the key will never be pressed
-        public FezButtonState replace_GetKeyState(Keys key)
+        [MonoModReplace]
+        public FezButtonState GetKeyState(Keys key)
         {
             if (TasKeys.ContainsKey(key))
             {
@@ -68,7 +70,8 @@ namespace FezEngine.Services
         }
 
         // read the 'NextButtons' keyboard instead of the given KeyboardState
-        public void replace_Update(KeyboardState state, GameTime time)
+        [MonoModReplace]
+        public void Update(KeyboardState state, GameTime time)
         {
             StepKey(KEY_UP        , NextButtons.Up       );
             StepKey(KEY_DOWN      , NextButtons.Down     );

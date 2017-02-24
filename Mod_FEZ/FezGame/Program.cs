@@ -6,12 +6,13 @@ using System.IO;
 using FezGame.Tools;
 using System.Threading;
 using FezTas;
+using MonoMod;
 
 namespace FezGame
 {
     public class Program
     {
-        [MonoMod.MonoModReplace]
+        [MonoModReplace]
         private static void Main(string[] args)
         {
             if (!Directory.Exists(Tas.Directory))
@@ -52,10 +53,6 @@ namespace FezGame
             {
                 Logger.Log("ThreadExecutionState", ex.ToString());
             }
-
-            // getting logging to go directly into Tas.Directory involves patching atleast 2 other dlls...
-            // this is good enough in the mean time
-            File.Move(Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "FEZ"), "Debug Log.txt"), Path.Combine(Tas.Directory, "Debug Log.txt"));
         }
 
         private static void Run()
@@ -69,11 +66,12 @@ namespace FezGame
         private static void ApplyArgs(string[] args)
         {
             // -c --clear-save-file
-            string str1 = Path.Combine(Tas.Directory, "SaveSlot");
+            // where not loading from the correct directory yet
+            string dir = Path.Combine(Tas.Directory, "SaveSlot");
             for (int index = -1; index < 3; ++index)
             {
-                if (File.Exists(str1 + index))
-                    File.Delete(str1 + index);
+                if (File.Exists(dir + index))
+                    File.Delete(dir + index);
             }
 
             // --force-60hz
