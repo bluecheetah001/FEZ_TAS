@@ -21,11 +21,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Mono.Cecil">
-      <HintPath>..\MonoMod\Mono.Cecil.dll</HintPath>
+    <Reference Include="Mono.Cecil, Version=0.10.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MonoMod\bin\Release\Mono.Cecil.dll</HintPath>
     </Reference>
-    <Reference Include="MonoMod">
-      <HintPath>..\MonoMod\MonoMod.exe</HintPath>
+    <Reference Include="MonoMod, Version=17.1.6263.38373, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MonoMod\bin\Release\MonoMod.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

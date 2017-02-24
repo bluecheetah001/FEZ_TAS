@@ -34,9 +34,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\FEZ_TAS\MonoGame.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="MonoMod, Version=17.1.6259.36342, Culture=neutral, processorArchitecture=x86">
+    <Reference Include="MonoMod, Version=17.1.6263.38373, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MonoMod\MonoMod.exe</HintPath>
+      <HintPath>..\MonoMod\bin\Release\MonoMod.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -59,7 +59,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"C:\Users\Ben\git\MonoMod\bin\Release\MonoMod.exe" "$(SolutionDir)FEZ\FezEngine.dll" "$(TargetPath)" "$(SolutionDir)FEZ_TAS\FezEngine.dll"</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)MonoMod\bin\Release\MonoMod.exe" "$(SolutionDir)FEZ\FezEngine.dll" "$(TargetPath)" "$(SolutionDir)FEZ_TAS\FezEngine.dll"</PostBuildEvent>
   </PropertyGroup>
   <Target Name="AfterClean">
     <Delete Files="$(SolutionDir)FEZ_TAS\FezEngine.dll" ContinueOnError="true" />
