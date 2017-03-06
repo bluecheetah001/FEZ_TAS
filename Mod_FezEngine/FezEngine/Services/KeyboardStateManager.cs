@@ -59,7 +59,7 @@ namespace FezEngine.Services
         };
 
         // for known TasButton -> Keys, use that. Otherwise the key will never be pressed
-        [MonoModReplace]
+        // [MonoModReplace]
         public FezButtonState GetKeyState(Keys key)
         {
             if (TasKeys.ContainsKey(key))
@@ -70,7 +70,7 @@ namespace FezEngine.Services
         }
 
         // read the 'NextButtons' keyboard instead of the given KeyboardState
-        [MonoModReplace]
+        // [MonoModReplace]
         public void Update(KeyboardState state, GameTime time)
         {
             StepKey(KEY_UP        , NextButtons.Up       );

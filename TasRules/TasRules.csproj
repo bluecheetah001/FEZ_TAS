@@ -21,13 +21,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Mono.Cecil, Version=0.10.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MonoMod\bin\Release\Mono.Cecil.dll</HintPath>
+    <Reference Include="Mono.Cecil">
+      <HintPath>..\FEZ_TAS\Mono.Cecil.dll</HintPath>
     </Reference>
-    <Reference Include="MonoMod, Version=17.1.6263.38373, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MonoMod\bin\Release\MonoMod.exe</HintPath>
+    <Reference Include="MonoMod">
+      <HintPath>..\FEZ_TAS\MonoMod.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,11 +43,20 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
+  <PropertyGroup>
+    <PreBuildEvent>copy "$(SolutionDir)MonoMod\bin\Release\MonoMod.exe" "$(SolutionDir)FEZ_TAS\MonoMod.exe"
+copy "$(SolutionDir)MonoMod\bin\Release\Mono.Cecil.dll" "$(SolutionDir)FEZ_TAS\Mono.Cecil.dll"
+copy "$(SolutionDir)MonoMod\bin\Release\Mono.Cecil.Pdb.dll" "$(SolutionDir)FEZ_TAS\Mono.Cecil.Pdb.dll"
+copy "$(SolutionDir)MonoMod\bin\Release\Mono.Cecil.Mdb.dll" "$(SolutionDir)FEZ_TAS\Mono.Cecil.Mdb.dll"</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" "$(SolutionDir)FEZ_TAS\TasRules.dll"</PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="AfterClean">
+    <Delete Files="$(SolutionDir)FEZ_TAS\MonoMod.exe" ContinueOnError="true" />
+    <Delete Files="$(SolutionDir)FEZ_TAS\Mono.Cecil.dll" ContinueOnError="true" />
+    <Delete Files="$(SolutionDir)FEZ_TAS\Mono.Cecil.Pdb.dll" ContinueOnError="true" />
+    <Delete Files="$(SolutionDir)FEZ_TAS\Mono.Cecil.Mdb.dll" ContinueOnError="true" />
+    <Delete Files="$(SolutionDir)FEZ_TAS\TasRules.dll" ContinueOnError="true" />
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

@@ -24,7 +24,7 @@ namespace FezEngine.Components
         }
 
         // replace to make the transitions between playback and record much smoother
-        [MonoModReplace]
+        // [MonoModReplace]
         public void Update(GameTime gameTime)
         {
             // keyboard

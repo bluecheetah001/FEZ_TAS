@@ -44,7 +44,7 @@
     </Reference>
     <Reference Include="MonoGame.Framework, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="MonoMod">
-      <HintPath>..\MonoMod\bin\Release\MonoMod.exe</HintPath>
+      <HintPath>..\FEZ_TAS\MonoMod.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,11 +55,11 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="TasRules">
-      <HintPath>..\TasRules\bin\Release\TasRules.dll</HintPath>
+      <HintPath>..\FEZ_TAS\TasRules.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FezGame\patch_Fez.cs" />
+    <Compile Include="FezGame\Fez.cs" />
     <Compile Include="FezGame\Program.cs" />
     <Compile Include="FezGame\Services\GameStateManager.cs" />
     <Compile Include="FezGame\Tools\ThreadExecutionState.cs" />
@@ -69,7 +69,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"$(SolutionDir)MonoMod\bin\Release\MonoMod.exe" "$(SolutionDir)FEZ\FEZ.exe" "$(TargetPath)" "$(SolutionDir)FEZ_TAS\FEZ.exe"</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)FEZ_TAS\MonoMod.exe" "$(SolutionDir)FEZ\FEZ.exe" "$(TargetPath)" "$(SolutionDir)FEZ_TAS\FEZ.exe"</PostBuildEvent>
   </PropertyGroup>
   <Target Name="AfterClean">
     <Delete Files="$(SolutionDir)FEZ_TAS\FEZ.exe" ContinueOnError="true" />
