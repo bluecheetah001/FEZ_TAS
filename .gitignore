@@ -4,3 +4,4 @@ FEZ/
 **/obj/
 .vs/
 *.user
+packages/
