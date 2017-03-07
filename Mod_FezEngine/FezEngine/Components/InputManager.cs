@@ -1,4 +1,5 @@
-﻿using FezEngine.Services;
+﻿using Common;
+using FezEngine.Services;
 using FezEngine.Structure.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -27,6 +28,8 @@ namespace FezEngine.Components
         // [MonoModReplace]
         public void Update(GameTime gameTime)
         {
+            // Logger.Log("TAS", "IM Update");
+
             // keyboard
             KeyboardState.Update(Keyboard.GetState(), gameTime);
             Back = KeyboardState.OpenMap;

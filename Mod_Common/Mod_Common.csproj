@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5EB8D047-E107-4115-85A0-209CA9C149EF}</ProjectGuid>
+    <ProjectGuid>{9C16082A-EB00-4558-8853-D51F5CCBA1D0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FezTas</RootNamespace>
-    <AssemblyName>FezEngine.tas</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <AssemblyName>Common.tas.dll</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -20,28 +19,8 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-  </PropertyGroup>
-  <PropertyGroup>
-    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\FEZ_TAS\Common.dll</HintPath>
-    </Reference>
-    <Reference Include="FezEngine">
-      <HintPath>..\FEZ\FezEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Cecil, Version=0.10.0.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\FEZ_TAS\Mono.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGame.Framework, Version=3.0.1.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\FEZ_TAS\MonoGame.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="MonoMod">
       <HintPath>..\FEZ_TAS\MonoMod.exe</HintPath>
     </Reference>
@@ -58,18 +37,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FezEngine\Components\InputManager.cs" />
-    <Compile Include="FezEngine\Services\SoundManager.cs" />
-    <Compile Include="FezEngine\Tools\SettingsManager.cs" />
-    <Compile Include="FezTas\TasButtons.cs" />
-    <Compile Include="FezEngine\Services\KeyboardStateManager.cs" />
+    <Compile Include="Common\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"$(SolutionDir)FEZ_TAS\MonoMod.exe" "$(SolutionDir)FEZ\FezEngine.dll" "$(TargetPath)" "$(SolutionDir)FEZ_TAS\TasRules.dll" "$(SolutionDir)FEZ_TAS\FezEngine.dll"</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)FEZ_TAS\MonoMod.exe" "$(SolutionDir)FEZ\Common.dll" "$(TargetPath)" "$(SolutionDir)FEZ_TAS\TasRules.dll" "$(SolutionDir)FEZ_TAS\Common.dll"</PostBuildEvent>
   </PropertyGroup>
   <Target Name="AfterClean">
-    <Delete Files="$(SolutionDir)FEZ_TAS\FezEngine.dll" ContinueOnError="true" />
+    <Delete Files="$(SolutionDir)FEZ_TAS\Common.dll" ContinueOnError="true" />
   </Target>
 </Project>

@@ -6,8 +6,8 @@ namespace FezGame.Services
 {
     public class GameStateManager
     {
-        [MonoModIgnore]
         [ReplaceString("FEZ", "FEZ_TAS")]
+        [MonoModIgnore]
         public extern void SignInAndChooseStorage(Action onFinish);
     }
 }

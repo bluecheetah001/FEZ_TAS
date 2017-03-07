@@ -62,6 +62,9 @@
     <Compile Include="FezGame\Fez.cs" />
     <Compile Include="FezGame\Program.cs" />
     <Compile Include="FezGame\Services\GameStateManager.cs" />
+    <Compile Include="FezGame\Structure\SaveManagementLevel.cs" />
+    <Compile Include="FezGame\Structure\SaveSlotInfo.cs" />
+    <Compile Include="FezGame\Structure\SaveSlotSelectionLevel.cs" />
     <Compile Include="FezGame\Tools\ThreadExecutionState.cs" />
     <Compile Include="FezTas\Inspection.cs" />
     <Compile Include="FezTas\Tas.cs" />
@@ -69,7 +72,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"$(SolutionDir)FEZ_TAS\MonoMod.exe" "$(SolutionDir)FEZ\FEZ.exe" "$(TargetPath)" "$(SolutionDir)FEZ_TAS\FEZ.exe"</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)FEZ_TAS\MonoMod.exe" "$(SolutionDir)FEZ\FEZ.exe" "$(TargetPath)" "$(SolutionDir)FEZ_TAS\TasRules.dll" "$(SolutionDir)FEZ_TAS\FEZ.exe"</PostBuildEvent>
   </PropertyGroup>
   <Target Name="AfterClean">
     <Delete Files="$(SolutionDir)FEZ_TAS\FEZ.exe" ContinueOnError="true" />

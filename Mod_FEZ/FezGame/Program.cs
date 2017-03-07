@@ -66,13 +66,14 @@ namespace FezGame
         private static void ApplyArgs(string[] args)
         {
             // -c --clear-save-file
-            // where not loading from the correct directory yet
+            /* not clearing for testing
             string dir = Path.Combine(Tas.Directory, "SaveSlot");
             for (int index = -1; index < 3; ++index)
             {
                 if (File.Exists(dir + index))
                     File.Delete(dir + index);
             }
+            */
 
             // --force-60hz
             Fez.Force60Hz = true;
