@@ -101,7 +101,7 @@ namespace FezEngine.Components
             // calculate movement after gamepad so corrected coalesce applies to movement as well
             Movement = new Vector2(Right.IsDown() ? 1f : (Left.IsDown() ? -1f : 0.0f), Up.IsDown() ? 1f : (Down.IsDown() ? -1f : 0.0f));
 
-            // mouse is disabled in FEZ TAS, because we might add TAS controls based on mouse
+            // no need to pull mouse since it is disable anyway
 
             //finish enabling/disabling gamepad
             UseGamepadState = UseGamepadState.IsDown() ? FezButtonState.Down : FezButtonState.Up;

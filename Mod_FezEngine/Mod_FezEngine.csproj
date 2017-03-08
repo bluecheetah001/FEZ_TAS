@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FezEngine\Components\InputManager.cs" />
+    <Compile Include="FezEngine\Services\MouseStateManager.cs" />
     <Compile Include="FezEngine\Services\SoundManager.cs" />
     <Compile Include="FezEngine\Tools\SettingsManager.cs" />
     <Compile Include="FezTas\TasButtons.cs" />

@@ -15,8 +15,6 @@ namespace FezGame
         private extern void orig_Initialize();
         protected override void Initialize()
         {
-            Version += " T0.1";
-
             orig_Initialize();
             Window.Title = "FEZ TAS";
             Tas.Initialize(this);
@@ -75,10 +73,6 @@ namespace FezGame
 
         // allow game to run in background
         [MonoModReplace]
-        public new bool IsActive
-        {
-            get { return true; }
-            set { }
-        }
+        public new bool IsActive { get { return true; } }
     }
 }
