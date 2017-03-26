@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using FezTas.Graphics;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.IO;
@@ -30,6 +31,7 @@ namespace FezTas
         public static void Initialize(Game game)
         {
             Inspection.Initialize(game);
+            Graphics.Draw.Initialize(game);
         }
 
         public static void Update()
@@ -45,8 +47,17 @@ namespace FezTas
             GlobalFrames++;
         }
 
-        public static void Draw(GraphicsDevice graphics)
+        public static void Draw()
         {
+            Graphics.Draw.Start();
+            try
+            {
+                Graphics.Draw.Text(0, 0, $"Tas v0.1\n{GlobalFrames}");
+            }
+            finally
+            {
+                Graphics.Draw.End();
+            }
         }
     }
 }

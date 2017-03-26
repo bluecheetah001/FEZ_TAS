@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FezEngine\Components\InputManager.cs" />
-    <Compile Include="FezEngine\Services\MouseStateManager.cs" />
     <Compile Include="FezEngine\Services\SoundManager.cs" />
     <Compile Include="FezEngine\Tools\SettingsManager.cs" />
     <Compile Include="FezTas\TasButtons.cs" />
@@ -68,7 +67,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"$(SolutionDir)FEZ_TAS\MonoMod.exe" "$(SolutionDir)FEZ\FezEngine.dll" "$(TargetPath)" "$(SolutionDir)FEZ_TAS\TasRules.dll" "$(SolutionDir)FEZ_TAS\FezEngine.dll"</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)FEZ_TAS\MonoMod.exe" --cleanup-all "$(SolutionDir)FEZ\FezEngine.dll" "$(TargetPath)" "$(SolutionDir)FEZ_TAS\TasRules.dll" "$(SolutionDir)FEZ_TAS\FezEngine.dll"</PostBuildEvent>
   </PropertyGroup>
   <Target Name="AfterClean">
     <Delete Files="$(SolutionDir)FEZ_TAS\FezEngine.dll" ContinueOnError="true" />

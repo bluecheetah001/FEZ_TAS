@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FezTas</RootNamespace>
-    <AssemblyName>MonoGame.Framework.tas.dll</AssemblyName>
+    <AssemblyName>MonoGame.Framework.tas</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,12 +42,13 @@
   <ItemGroup>
     <Compile Include="Microsoft\Xna\Framework\Audio\OpenALSoundController.cs" />
     <Compile Include="Microsoft\Xna\Framework\Graphics\GraphicsExtensions.cs" />
+    <Compile Include="Microsoft\Xna\Framework\Graphics\SpriteFont.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"$(SolutionDir)FEZ_TAS\MonoMod.exe" "$(SolutionDir)FEZ\MonoGame.Framework.dll" "$(TargetPath)" "$(SolutionDir)FEZ_TAS\TasRules.dll" "$(SolutionDir)FEZ_TAS\MonoGame.Framework.dll"</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)FEZ_TAS\MonoMod.exe" --cleanup-all "$(SolutionDir)FEZ\MonoGame.Framework.dll" "$(TargetPath)" "$(SolutionDir)FEZ_TAS\TasRules.dll" "$(SolutionDir)FEZ_TAS\MonoGame.Framework.dll"</PostBuildEvent>
   </PropertyGroup>
   <Target Name="AfterClean">
     <Delete Files="$(SolutionDir)FEZ_TAS\MonoGame.Framework.dll" ContinueOnError="true" />

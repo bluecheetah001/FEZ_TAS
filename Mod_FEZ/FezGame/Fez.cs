@@ -68,7 +68,7 @@ namespace FezGame
         {
             orig_Draw(new GameTime(TrueTime, TrueEllapse));
             TrueEllapse = TimeSpan.Zero;
-            Tas.Draw(GraphicsDevice);
+            Tas.Draw();
         }
 
         // allow game to run in background

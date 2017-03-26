@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FezTas</RootNamespace>
-    <AssemblyName>Common.tas.dll</AssemblyName>
+    <AssemblyName>Common.tas</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,7 +42,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"$(SolutionDir)FEZ_TAS\MonoMod.exe" "$(SolutionDir)FEZ\Common.dll" "$(TargetPath)" "$(SolutionDir)FEZ_TAS\TasRules.dll" "$(SolutionDir)FEZ_TAS\Common.dll"</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)FEZ_TAS\MonoMod.exe" --cleanup-all "$(SolutionDir)FEZ\Common.dll" "$(TargetPath)" "$(SolutionDir)FEZ_TAS\TasRules.dll" "$(SolutionDir)FEZ_TAS\Common.dll"</PostBuildEvent>
   </PropertyGroup>
   <Target Name="AfterClean">
     <Delete Files="$(SolutionDir)FEZ_TAS\Common.dll" ContinueOnError="true" />

@@ -101,7 +101,7 @@ namespace FezEngine.Components
             // calculate movement after gamepad so corrected coalesce applies to movement as well
             Movement = new Vector2(Right.IsDown() ? 1f : (Left.IsDown() ? -1f : 0.0f), Up.IsDown() ? 1f : (Down.IsDown() ? -1f : 0.0f));
 
-            // no need to pull mouse since it is disable anyway
+            // no need to pull mouse since it is disabled anyway
 
             //finish enabling/disabling gamepad
             UseGamepadState = UseGamepadState.IsDown() ? FezButtonState.Down : FezButtonState.Up;

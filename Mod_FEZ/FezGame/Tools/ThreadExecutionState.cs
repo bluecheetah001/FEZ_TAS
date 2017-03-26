@@ -2,7 +2,6 @@
 
 namespace FezGame.Tools
 {
-    // just for public read access
     [MonoModIgnore]
     public static class ThreadExecutionState
     {

@@ -42,7 +42,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\FEZ_TAS\FezEngine.dll</HintPath>
     </Reference>
-    <Reference Include="MonoGame.Framework, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="MonoGame.Framework, Version=3.0.1.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FEZ_TAS\MonoGame.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="MonoMod">
       <HintPath>..\FEZ_TAS\MonoMod.exe</HintPath>
     </Reference>
@@ -66,13 +69,14 @@
     <Compile Include="FezGame\Structure\SaveSlotInfo.cs" />
     <Compile Include="FezGame\Structure\SaveSlotSelectionLevel.cs" />
     <Compile Include="FezGame\Tools\ThreadExecutionState.cs" />
+    <Compile Include="FezTas\Graphics\Draw.cs" />
     <Compile Include="FezTas\Inspection.cs" />
     <Compile Include="FezTas\Tas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"$(SolutionDir)FEZ_TAS\MonoMod.exe" "$(SolutionDir)FEZ\FEZ.exe" "$(TargetPath)" "$(SolutionDir)FEZ_TAS\TasRules.dll" "$(SolutionDir)FEZ_TAS\FEZ.exe"</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)FEZ_TAS\MonoMod.exe" --cleanup-all "$(SolutionDir)FEZ\FEZ.exe" "$(TargetPath)" "$(SolutionDir)FEZ_TAS\TasRules.dll" "$(SolutionDir)FEZ_TAS\FEZ.exe"</PostBuildEvent>
   </PropertyGroup>
   <Target Name="AfterClean">
     <Delete Files="$(SolutionDir)FEZ_TAS\FEZ.exe" ContinueOnError="true" />
