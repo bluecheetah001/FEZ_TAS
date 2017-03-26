@@ -1,52 +1,35 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace FezTas.Graphics
 {
-    public static class Draw
+    class Draw
     {
-        private static GraphicsDevice GraphicsDevice;
-        private static SpriteBatch Batch;
-
-        private static SpriteFont Font;
-        public static int LineSpacing { get { return Font.LineSpacing; } set { Font.LineSpacing = value; } }
-        public static int CharSpacing { get { return (int)Font.Spacing; } set { Font.Spacing = value; } }
-
-        public static Color Foreground;
-        public static Color Shadow;
-        public static Vector2 DropShadow;
+        private static Texture2D Texture;
+        public static Color Color;
 
         public static void Initialize(Game game)
         {
-            GraphicsDevice = game.GraphicsDevice;
-            Batch = new SpriteBatch(GraphicsDevice);
-            Font = Inspection.Load<SpriteFont>("Fonts/Latin Small").createTasFont();
-
-            Foreground = Color.White;
-            Shadow = Color.Black;
-            DropShadow = new Vector2(1, 1);
+            Texture = new Texture2D(game.GraphicsDevice, 1, 1);
+            Texture.SetData(new[] { Color.White });
+            Color = Color.Black;
         }
 
-        // only called from Tas.Draw()
-        public static void Start()
+        public static void Rectangle(Vector2 position, Vector2 size)
         {
-            Batch.Begin();
+            Graphics.DrawTexture(Texture, Color, size, position);
         }
 
-        // only called from Tas.Draw()
-        public static void End()
+        public static void Line(Vector2 start, Vector2 end)
         {
-            Batch.End();
-        }
-
-        public static void Text(int x, int y, string text)
-        {
-            Vector2 pos = new Vector2(x, y-8);
-            if (DropShadow != Vector2.Zero)
-            {
-                Batch.DrawString(Font, text, pos + DropShadow, Shadow);
-            }
-            Batch.DrawString(Font, text, pos, Foreground);
+            float length = (end - start).Length();
+            float rotation = (float)Math.Atan2(end.Y - start.Y, end.X - start.X);
+            Graphics.DrawTexture(Texture, Color, rotation, Vector2.Zero, new Vector2(length, 1), start);
         }
     }
 }

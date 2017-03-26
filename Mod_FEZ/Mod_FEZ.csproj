@@ -60,6 +60,10 @@
     <Reference Include="TasRules">
       <HintPath>..\FEZ_TAS\TasRules.dll</HintPath>
     </Reference>
+    <Reference Include="XnaWordWrapCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FEZ_TAS\XnaWordWrapCore.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FezGame\Fez.cs" />
@@ -70,6 +74,8 @@
     <Compile Include="FezGame\Structure\SaveSlotSelectionLevel.cs" />
     <Compile Include="FezGame\Tools\ThreadExecutionState.cs" />
     <Compile Include="FezTas\Graphics\Draw.cs" />
+    <Compile Include="FezTas\Graphics\Graphics.cs" />
+    <Compile Include="FezTas\Graphics\Text.cs" />
     <Compile Include="FezTas\Inspection.cs" />
     <Compile Include="FezTas\Tas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

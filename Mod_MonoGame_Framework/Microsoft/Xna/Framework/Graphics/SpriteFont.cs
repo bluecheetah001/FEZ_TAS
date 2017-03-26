@@ -1,14 +1,20 @@
 ﻿using MonoMod;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Xna.Framework.Graphics
 {
     public class SpriteFont
     {
+        public const int TasFontHeight = 14;
+
         [MonoModIgnore]
         public extern SpriteFont(Texture2D texture, List<Rectangle> glyphBounds, List<Rectangle> cropping, List<char> characters, int lineSpacing, float spacing, List<Vector3> kerning, char? defaultCharacter);
 
-        // duplicates the font, but makes all the numbers have the same width by using known hardcoded valuse
+        // duplicates the font
+        // makes all the numbers have the same width
+        // mves all brackets down so they do not extend above every other character
+        // fixed the height so there is not a lot of extra space
         public SpriteFont createTasFont()
         {
             List<char> characters = new List<char>();
@@ -20,7 +26,17 @@ namespace Microsoft.Xna.Framework.Graphics
             {
                 characters.Add(glyph.Character);
                 glyphBounds.Add(glyph.BoundsInTexture);
-                cropping.Add(glyph.Cropping);
+
+
+                if ("[](){}|$".IndexOf(glyph.Character) >= 0)
+                {
+                    cropping.Add(new Rectangle(0, 0, glyph.Cropping.Width, TasFontHeight));
+                }
+                else
+                {
+                    cropping.Add(new Rectangle(0, glyph.Cropping.Y - 8, glyph.Cropping.Width, TasFontHeight));
+                }
+
                 if (glyph.Character == '1')
                 {
                     kerning.Add(new Vector3(2, 4, 4));
@@ -35,7 +51,7 @@ namespace Microsoft.Xna.Framework.Graphics
                 }
             }
 
-            return new SpriteFont(_texture, glyphBounds, cropping, characters, 18, 1, kerning, '?');
+            return new SpriteFont(_texture, glyphBounds, cropping, characters, TasFontHeight, 1, kerning, '?');
         }
 
         // the fields we need access to
